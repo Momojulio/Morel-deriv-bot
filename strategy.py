@@ -1,1 +1,0 @@
-# Détection des patterns + divergence RSI + S/R
