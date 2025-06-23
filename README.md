@@ -1,1 +1,0 @@
-# Guide Render et commandes Telegram
