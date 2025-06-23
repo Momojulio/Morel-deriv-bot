@@ -1,10 +1,18 @@
-FROM golang:1.19-alpine
+# Image de base Python
+FROM python:3.10
 
-ARG DIR=app
-COPY . /${DIR}
-WORKDIR /${DIR}
+# Dossier de travail
+WORKDIR /app
 
-RUN go mod download
-RUN go build -o main ./cmd/main.go
+# Copier les dépendances et les installer
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD go run ./main
+# Copier le reste du code
+COPY . .
+
+# Port à exposer pour Render
+EXPOSE 8080
+
+# Commande de démarrage
+CMD ["python", "main.py"]
